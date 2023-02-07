@@ -9,8 +9,7 @@ from datetime import datetime
 #from omxplayer.player importqq OMXPlayer
 from pathlib import Path
 from time import sleep
-from objdet import count_people_tflite
-import scheduleCron
+
 
 media_files = [],
 media_index = 0,
@@ -63,14 +62,12 @@ while True:
         weather_prefix1.close()
         media_prefix = current_mode + '-'+weather_prefix
        
-        #file = open('/home/pi/Downloads/Advertisements/person.txt', 'r' )
-        #count = file.read()
-        #file.close()
-        #count = count.split('#')[-1]
-        count=count_people_tflite()
-        print("Count:", count)
+        file = open('/home/pi/Downloads/Advertisements/person.txt', 'r' )
+        count = file.read()
+        file.close()
+        count = count.split('#')[-1]
         
-        prefix = media_prefix+'P'+str(count)
+        prefix = media_prefix+'P'+count
         print("*** ODR prefix",prefix)
         
     if mode == ' ':
